@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState } from 'react';
 import foods from './foods.json';
 import FoodBox from './components/FoodBox/FoodBox';
-import Item from 'antd/lib/list/Item';
 import AddFoodForm from './components/AddFoodForm/AddFoodForms';
 import SearchBar from './components/SearchBar/SearchBar';
 
@@ -26,15 +25,9 @@ function App() {
   }
 
   const filterFoodList = (search) =>{
-    if (search) {
-      const newFoodList = foodsList.filter( (item) => {
-        return item.name.toUpperCase().includes(search.toUpperCase())
-      })
-      setFoodsList(newFoodList)
-    } else {
-      setFoodsList(foods)
-    }
-    
+    setFoodsList (foods.filter( (item) => {
+      return item.name.toUpperCase().includes(search.toUpperCase())
+    }))
   }
 
   return (
